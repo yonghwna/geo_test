@@ -4,10 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Compass, Map as MapIcon } from "lucide-react";
 
 export default function LiveLocationTracker() {
-  const [position, setPosition] = useState(null);
-  const [error, setError] = useState(null);
+  const [position, setPosition] = useState<{
+    latitude: number;
+    longitude: number;
+    accuracy: number;
+  }>();
+  const [error, setError] = useState<string | null>(null);
   const [watching, setWatching] = useState(false);
-  const [watchId, setWatchId] = useState(null);
+  const [watchId, setWatchId] = useState<number | null>(null);
 
   // 위치 추적 시작
   const startTracking = () => {
